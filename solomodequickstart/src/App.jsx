@@ -24,7 +24,6 @@ function App() {
 
   const [MySettings, setMySettings] = useState(DefaultSettings)
 
-  const [count, setCount] = useState(0)
   const [mapName, setMapName] = useState("KF-Corridor")
   const [disableEventZEDs, setDisableEventZEDs] = useState(true)
   const [disableRobots, setDisableRobots] = useState(true)
@@ -32,7 +31,7 @@ function App() {
   const [globalHpFakes, setGlobalHpFakes] = useState(6)
 
 
-  // TODO: probably just wise to reduce this to a combined state
+  // TODO: reduce this to a combined state
   const [AlbinoAlphas, setAlbinoAlphas] = useState(DefaultSettings["AlbinoAlphas"])
   const [AlbinoCrawlers, setAlbinoCrawlers] = useState(DefaultSettings["AlbinoCrawlers"])
   const [AlbinoGorefasts, setAlbinoGorefasts] = useState(DefaultSettings["AlbinoGorefasts"])
@@ -122,13 +121,29 @@ function App() {
   //   }
   //   setWaveSizeFakes(desiredWaveSizeFakes)
   // }
-
   const updateMySettings = (e) => {
-    // const updatedSettings = e.target.value
+    // DEBUG:
+    let _MySettings = {...MySettings}
+    if(typeof(_MySettings[e.target.id]) === "boolean"){
+      console.log("is a checkbox")
+      _MySettings[e.target.id] = e.target.checked
+    } 
+    if(typeof(_MySettings[e.target.id]) === "number"){
+      console.log("number input")
+      _MySettings[e.target.id] = e.target.value * 1
+    }
+    
+    console.log(_MySettings)
+    setMySettings(_MySettings)
   }
 
   const handleOnCreateConsoleCommand = () => {
+
     let CommandString = ""
+    // TODO: NOTE: move values to combined state - refactor into a loop
+    // if (DefaultSettings["AlbinoAlphas"] != MySettings["AlbinoAlphas"]) { 
+    //   CommandString += "?AlbinoAlphas=" + AlbinoAlphas
+    // }
     if (DefaultSettings["AlbinoAlphas"] != AlbinoAlphas) {
       CommandString += "?AlbinoAlphas=" + AlbinoAlphas
     }
@@ -170,11 +185,7 @@ function App() {
       CommandString += "?WaveSizeFakes=" + WaveSizeFakes
     }
     CommandString += "?ZedsType=" + ZedsType
-    // if(DefaultSettings["AlbinoCrawlers"] == AlbinoCrawlers){
-    //   CommandString += "?AlbinoCrawlers=" + AlbinoCrawlers
-    // }
 
-    console.log(CommandString)
     setConsoleCommandOutput(CommandString)
   }
 
@@ -183,17 +194,19 @@ function App() {
       kf2 output
       <form>
         <div>
+          {/* TODO: change the inputs to combined state */}
           <label htmlFor="input_AlbinoAlphas">Set AlbinoAlphas</label>
           <input
             type="checkbox"
             placeholder="Default: True"
-            id="input_AlbinoAlphas"
-            onChange={(e) => setAlbinoAlphas(!AlbinoAlphas)}
-            checked={AlbinoAlphas}
+            id="AlbinoAlphas"
+            // onChange={(e) => { setAlbinoAlphas(!AlbinoAlphas) }} // working line
+            onChange={(e) => { updateMySettings(e) }} // testing line for combined state implementation
+            checked={MySettings["AlbinoAlphas"]}
           // value={MySettings["AlbinoAlphas"]}
           >
           </input>
-          <b>Current: {AlbinoAlphas ? "TRUE" : "FALSE"}</b>
+          <b>Current: {MySettings["AlbinoAlphas"] ? "TRUE" : "FALSE"}</b>
           <i>Default: {DefaultSettings["AlbinoAlphas"] ? "TRUE" : "FALSE"}</i>
         </div>
         <div>
@@ -201,7 +214,7 @@ function App() {
           <input
             type="checkbox"
             placeholder="Default: True"
-            id="input_AlbinoCrawlers"
+            id="AlbinoCrawlers"
             onChange={(e) => setAlbinoCrawlers(!AlbinoCrawlers)}
             checked={AlbinoCrawlers}
           // value={MySettings["AlbinoCrawlers"]}
@@ -215,7 +228,7 @@ function App() {
           <input
             type="checkbox"
             placeholder="Default: True"
-            id="input_AlbinoGorefasts"
+            id="AlbinoGorefasts"
             onChange={(e) => setAlbinoGorefasts(!AlbinoGorefasts)}
             checked={AlbinoGorefasts}
           // value={MySettings["AlbinoGorefasts"]}
@@ -229,13 +242,14 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_CohortSize"
-            onChange={(e) => setCohortSize(e.target.value)}
-            value={CohortSize}
+            id="CohortSize"
+            // onChange={(e) => setCohortSize(e.target.value)}
+            onChange={(e) => updateMySettings(e)}
+            value={MySettings["CohortSize"]}
             style={{ width: "40px" }}
           >
           </input>
-          <b>Current: {CohortSize}</b>
+          <b>Current: {MySettings["CohortSize"]}</b>
           <i>Default: {DefaultSettings["CohortSize"]}</i>
         </div>
         <div>
@@ -243,7 +257,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_DoshKill"
+            id="DoshKill"
             onChange={(e) => setDoshKill(e.target.value)}
             value={DoshKill}
             style={{ width: "40px" }}
@@ -257,7 +271,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_FleshpoundHPFakes"
+            id="FleshpoundHPFakes"
             onChange={(e) => setFleshpoundHPFakes(e.target.value)}
             value={FleshpoundHPFakes}
             style={{ width: "40px" }}
@@ -271,7 +285,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_HeadlessFleshpoundDmg"
+            id="HeadlessFleshpoundDmg"
             onChange={(e) => setHeadlessFleshpoundDmg(e.target.value)}
             value={HeadlessFleshpoundDmg}
             style={{ width: "40px" }}
@@ -285,7 +299,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_HeadlessScrakeDmg"
+            id="HeadlessScrakeDmg"
             onChange={(e) => setHeadlessScrakeDmg(e.target.value)}
             value={HeadlessScrakeDmg}
             style={{ width: "40px" }}
@@ -299,7 +313,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_MaxMonsters"
+            id="MaxMonsters"
             onChange={(e) => setMaxMonsters(e.target.value)}
             value={MaxMonsters}
             style={{ width: "40px" }}
@@ -313,7 +327,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_QuarterPoundHPFakes"
+            id="QuarterPoundHPFakes"
             onChange={(e) => setQuarterPoundHPFakes(e.target.value)}
             value={QuarterPoundHPFakes}
             style={{ width: "40px" }}
@@ -327,7 +341,7 @@ function App() {
           <input
             type="number"
             placeholder="Default: True"
-            id="input_ScrakeHPFakes"
+            id="ScrakeHPFakes"
             onChange={(e) => setScrakeHPFakes(e.target.value)}
             value={ScrakeHPFakes}
             style={{ width: "40px" }}
@@ -392,7 +406,7 @@ function App() {
             <input
               type="number"
               placeholder="Default: True"
-              id="input_TrashHPFakes"
+              id="TrashHPFakes"
               onChange={(e) => setTrashHPFakes(e.target.value)}
               value={TrashHPFakes}
               style={{ width: "40px" }}
@@ -406,7 +420,7 @@ function App() {
             <input
               type="number"
               placeholder="Default: True"
-              id="input_WaveSizeFakes"
+              id="WaveSizeFakes"
               onChange={(e) => setWaveSizeFakes(e.target.value)}
               value={WaveSizeFakes}
               style={{ width: "40px" }}
@@ -430,7 +444,7 @@ function App() {
           <input
             type="number"
             placeholder="6"
-            id="input_WaveSizeFakes"
+            id="WaveSizeFakes"
             onChange={(e) => updateMySettings(e, setting)}
             value={MySettings["WaveSizeFakes"]}
           >
@@ -447,8 +461,9 @@ function App() {
         <h3>List of CD Chokepoints console settings: </h3>
 
       </div>
-      {/* 
-        TODO: allow set difficulty
+      {/*
+       TODO: allow set difficulty
+       TODO: export components for different settings - bools, nums, and strings
          */}
       <div>
         <button onClick={() => handleOnCreateConsoleCommand()}>OUTPUT TO CONSOLE</button>
