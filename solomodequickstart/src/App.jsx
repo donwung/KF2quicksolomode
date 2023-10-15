@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import SettingsCheckbox from './assets/components/SettingsCheckbox'
 
 function App() {
   const DefaultSettings = {
@@ -193,8 +194,8 @@ function App() {
     <>
       kf2 output
       <form>
-        <div>
-          {/* TODO: change the inputs to combined state */}
+        <SettingsCheckbox MySettings={MySettings} DefaultSettings={DefaultSettings} updateMySettings={updateMySettings}></SettingsCheckbox>
+        {/* <div>
           <label htmlFor="input_AlbinoAlphas">Set AlbinoAlphas</label>
           <input
             type="checkbox"
@@ -208,7 +209,7 @@ function App() {
           </input>
           <b>Current: {MySettings["AlbinoAlphas"] ? "TRUE" : "FALSE"}</b>
           <i>Default: {DefaultSettings["AlbinoAlphas"] ? "TRUE" : "FALSE"}</i>
-        </div>
+        </div> */}
         <div>
           <label htmlFor="input_AlbinoCrawlers">Set AlbinoCrawlers</label>
           <input
