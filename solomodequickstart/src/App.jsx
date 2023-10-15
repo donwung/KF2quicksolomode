@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import SettingsCheckbox from './assets/components/SettingsCheckbox'
+import SettingsNumberbox from './assets/components/SettingsNumberbox'
 
 function App() {
   const DefaultSettings = {
@@ -124,16 +125,16 @@ function App() {
   // }
   const updateMySettings = (e) => {
     // DEBUG:
-    let _MySettings = {...MySettings}
-    if(typeof(_MySettings[e.target.id]) === "boolean"){
+    let _MySettings = { ...MySettings }
+    if (typeof (_MySettings[e.target.id]) === "boolean") {
       console.log("is a checkbox")
       _MySettings[e.target.id] = e.target.checked
-    } 
-    if(typeof(_MySettings[e.target.id]) === "number"){
+    }
+    if (typeof (_MySettings[e.target.id]) === "number") {
       console.log("number input")
       _MySettings[e.target.id] = e.target.value * 1
     }
-    
+
     console.log(_MySettings)
     setMySettings(_MySettings)
   }
@@ -193,164 +194,122 @@ function App() {
   return (
     <>
       kf2 output
+      {/* NOTE: don't need form tag */}
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <div>
+          <h3>
+            main category
+          </h3>
+          <ul>
+            <li>mm</li>
+            <li>sc</li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            secondary category
+          </h3>
+          <ul>
+            <li>CohortSize</li>
+            <li>DoshKill</li>
+            <li></li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            zeds settings
+          </h3>
+          <ul>
+            <li>AlbinoAlphas</li>
+            <li>AlbinoCrawlers</li>
+            <li>AlbinoGorefasts</li>
+            <li>FPHPF</li>
+            <li>SCHPF</li>
+          </ul>
+        </div>
+      </div>
       <form>
-        <SettingsCheckbox MySettings={MySettings} DefaultSettings={DefaultSettings} updateMySettings={updateMySettings}></SettingsCheckbox>
-        {/* <div>
-          <label htmlFor="input_AlbinoAlphas">Set AlbinoAlphas</label>
-          <input
-            type="checkbox"
-            placeholder="Default: True"
-            id="AlbinoAlphas"
-            // onChange={(e) => { setAlbinoAlphas(!AlbinoAlphas) }} // working line
-            onChange={(e) => { updateMySettings(e) }} // testing line for combined state implementation
-            checked={MySettings["AlbinoAlphas"]}
-          // value={MySettings["AlbinoAlphas"]}
-          >
-          </input>
-          <b>Current: {MySettings["AlbinoAlphas"] ? "TRUE" : "FALSE"}</b>
-          <i>Default: {DefaultSettings["AlbinoAlphas"] ? "TRUE" : "FALSE"}</i>
-        </div> */}
-        <div>
-          <label htmlFor="input_AlbinoCrawlers">Set AlbinoCrawlers</label>
-          <input
-            type="checkbox"
-            placeholder="Default: True"
-            id="AlbinoCrawlers"
-            onChange={(e) => setAlbinoCrawlers(!AlbinoCrawlers)}
-            checked={AlbinoCrawlers}
-          // value={MySettings["AlbinoCrawlers"]}
-          >
-          </input>
-          <b>Current: {AlbinoCrawlers ? "TRUE" : "FALSE"}</b>
-          <i>Default: {DefaultSettings["AlbinoCrawlers"] ? "TRUE" : "FALSE"}</i>
-        </div>
-        <div>
-          <label htmlFor="input_AlbinoGorefasts">Set AlbinoGorefasts</label>
-          <input
-            type="checkbox"
-            placeholder="Default: True"
-            id="AlbinoGorefasts"
-            onChange={(e) => setAlbinoGorefasts(!AlbinoGorefasts)}
-            checked={AlbinoGorefasts}
-          // value={MySettings["AlbinoGorefasts"]}
-          >
-          </input>
-          <b>Current: {AlbinoGorefasts ? "TRUE" : "FALSE"}</b>
-          <i>Default: {DefaultSettings["AlbinoGorefasts"] ? "TRUE" : "FALSE"}</i>
-        </div>
-        <div>
-          <label htmlFor="input_CohortSize">Set CohortSize</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="CohortSize"
-            // onChange={(e) => setCohortSize(e.target.value)}
-            onChange={(e) => updateMySettings(e)}
-            value={MySettings["CohortSize"]}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {MySettings["CohortSize"]}</b>
-          <i>Default: {DefaultSettings["CohortSize"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_DoshKill">Set DoshKill</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="DoshKill"
-            onChange={(e) => setDoshKill(e.target.value)}
-            value={DoshKill}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {DoshKill}</b>
-          <i>Default: {DefaultSettings["DoshKill"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_FleshpoundHPFakes">Set FleshpoundHPFakes</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="FleshpoundHPFakes"
-            onChange={(e) => setFleshpoundHPFakes(e.target.value)}
-            value={FleshpoundHPFakes}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {FleshpoundHPFakes}</b>
-          <i>Default: {DefaultSettings["FleshpoundHPFakes"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_HeadlessFleshpoundDmg">Set HeadlessFleshpoundDmg</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="HeadlessFleshpoundDmg"
-            onChange={(e) => setHeadlessFleshpoundDmg(e.target.value)}
-            value={HeadlessFleshpoundDmg}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {HeadlessFleshpoundDmg}</b>
-          <i>Default: {DefaultSettings["HeadlessFleshpoundDmg"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_HeadlessScrakeDmg">Set HeadlessScrakeDmg</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="HeadlessScrakeDmg"
-            onChange={(e) => setHeadlessScrakeDmg(e.target.value)}
-            value={HeadlessScrakeDmg}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {HeadlessScrakeDmg}</b>
-          <i>Default: {DefaultSettings["HeadlessScrakeDmg"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_MaxMonsters">Set MaxMonsters</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="MaxMonsters"
-            onChange={(e) => setMaxMonsters(e.target.value)}
-            value={MaxMonsters}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {MaxMonsters}</b>
-          <i>Default: {DefaultSettings["MaxMonsters"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_QuarterPoundHPFakes">Set QuarterPoundHPFakes</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="QuarterPoundHPFakes"
-            onChange={(e) => setQuarterPoundHPFakes(e.target.value)}
-            value={QuarterPoundHPFakes}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {QuarterPoundHPFakes}</b>
-          <i>Default: {DefaultSettings["QuarterPoundHPFakes"]}</i>
-        </div>
-        <div>
-          <label htmlFor="input_ScrakeHPFakes">Set ScrakeHPFakes</label>
-          <input
-            type="number"
-            placeholder="Default: True"
-            id="ScrakeHPFakes"
-            onChange={(e) => setScrakeHPFakes(e.target.value)}
-            value={ScrakeHPFakes}
-            style={{ width: "40px" }}
-          >
-          </input>
-          <b>Current: {ScrakeHPFakes}</b>
-          <i>Default: {DefaultSettings["ScrakeHPFakes"]}</i>
-        </div>
+        <SettingsCheckbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"AlbinoAlphas"}
+        >
+        </SettingsCheckbox>
+        <SettingsCheckbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"AlbinoCrawlers"}
+        >
+        </SettingsCheckbox>
+        <SettingsCheckbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"AlbinoGorefasts"}
+        >
+        </SettingsCheckbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"CohortSize"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"DoshKill"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"FleshPoundHpfakes"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"HeadlessFleshpoundDmg"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"HeadlessScrakeDmg"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"MaxMonsters"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"QuarterPoundHPFakes"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"ScrakeHPFakes"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"TrashHPFakes"}>
+        </SettingsNumberbox>
+        <SettingsNumberbox
+          MySettings={MySettings}
+          DefaultSettings={DefaultSettings}
+          updateMySettings={updateMySettings}
+          cdSetting={"WaveSizeFakes"}>
+        </SettingsNumberbox>
         <div>
           <label htmlFor="input_SpawnCycle">Set SpawnCycle</label>
           <select
@@ -402,34 +361,6 @@ function App() {
           <i>Default: {DefaultSettings["SpawnCycle"]}</i>
         </div>
         <div>
-          <div>
-            <label htmlFor="input_TrashHPFakes">Set TrashHPFakes</label>
-            <input
-              type="number"
-              placeholder="Default: True"
-              id="TrashHPFakes"
-              onChange={(e) => setTrashHPFakes(e.target.value)}
-              value={TrashHPFakes}
-              style={{ width: "40px" }}
-            >
-            </input>
-            <b>Current: {TrashHPFakes}</b>
-            <i>Default: {DefaultSettings["TrashHPFakes"]}</i>
-          </div>
-          <div>
-            <label htmlFor="input_WaveSizeFakes">Set WaveSizeFakes</label>
-            <input
-              type="number"
-              placeholder="Default: True"
-              id="WaveSizeFakes"
-              onChange={(e) => setWaveSizeFakes(e.target.value)}
-              value={WaveSizeFakes}
-              style={{ width: "40px" }}
-            >
-            </input>
-            <b>Current: {WaveSizeFakes}</b>
-            <i>Default: {DefaultSettings["WaveSizeFakes"]}</i>
-          </div>
           <label htmlFor="input_ZedsType">Set ZedsType</label>
           <select
             onChange={(e) => setZedsType(e.target.value)}>
@@ -440,19 +371,6 @@ function App() {
           <b>Current: {ZedsType}</b>
           <i>Default: {DefaultSettings["ZedsType"]}</i>
         </div>
-        {/* <div>
-          <label htmlFor="input_WaveSizeFakes">Set Wave Size Fakes</label>
-          <input
-            type="number"
-            placeholder="6"
-            id="WaveSizeFakes"
-            onChange={(e) => updateMySettings(e, setting)}
-            value={MySettings["WaveSizeFakes"]}
-          >
-          </input>
-          Default: 2
-          <button>TODO:More options</button>
-        </div> */}
       </form>
       <div>
         {/* TODO: 
