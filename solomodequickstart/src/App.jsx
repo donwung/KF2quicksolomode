@@ -340,9 +340,48 @@ function App() {
           <label htmlFor="input_SpawnCycle">Set SpawnCycle</label>
           <select
             onChange={(e) => setSpawnCycle(e.target.value)}>
-            <option>asl_v3</option>
-            <option>bl_v2</option>
-            <option>osffi_v2</option>
+            <option value="albino_heavy">albino_heavy by blackout + dandyboy + Kore [SML] </option>
+            <option value="basic_heavy">basic_heavy by blackout + dandyboy [SML] </option>
+            <option value="basic_moderate">basic_moderate by blackout + dandyboy + Kore[SML] </option>
+            <option value="basic_light">basic_light by blackout + dandyboy [SML]</option>
+            <option value="dtf_v1">dtf_v1 by Kore[SML] </option>
+            <option value="nam_pro_v5">nam_pro_v5 by Nam[SML] </option>
+            <option value="nam_pro_v5_plus">nam_pro_v5_plus by Nam[SML] </option>
+            <option value="gso_v1">gso_v1 by Tiger[SML]</option>
+            <option value="asl_v3">asl_v3 by DarkDarkington [SML]</option>
+            <option value="ts_mig_v1">ts_mig_v1 by Machine + Akathiiro313[SML]</option>
+            <option value="ts_mig_v1_p">ts_mig_v1_p by Machine + Akathiiro313[SML]</option>
+            <option value="ts_mig_v2">ts_mig_v2 by Machine [SML]</option>
+            <option value="ts_mig_v3">ts_mig_v3 by Machine [SML]</option>
+            <option value="ts_mig_v3_plus">ts_mig_v3_plus by Machine - edit by fanta[_M_]</option>
+            <option value="doom_v2">doom_v2 by HUNTER[SML]</option>
+            <option value="doom_v2_plus">doom_v2_plus by HUNTER[SML]</option>
+            <option value="doom_v2_plus_rmk">doom_v2_plus_rmk by HUNTER - edit by fanta[SML] </option>
+            <option value="bl_v2">bl_v2 by Sneakydevilll[SML]</option>
+            <option value="osffi_v1">osffi_v1 by GRANDface[SML] </option>
+            <option value="mko_v1">mko_v1 by miko[SML]</option>
+            <option value="doomsday_v1">doomsday_v1 by HUNTER[SML]</option>
+            <option value="machine_solo">machine_solo by Machine [S]</option>
+            <option value="osffi_v1_ms">osffi_v1_ms by GRANDface [SML] </option>
+            <option value="pro6">pro6 plus by Nam[SML]</option>
+            <option value="pro6">pro6 by Nam [SML]</option>
+            <option value="rd_sam">rd_sam by Extonix, Slayer and BardzBeast [SML] </option>
+            <option value="challenge_v1">challenge_v1 by KitanoV Pro[SML]</option>
+            {/* <option value="nvm_v1">nvm_v1 by Tamari </option> TODO: decompile chokepoints cd and rebuild - using these presets*/}
+            {/* <option value="nvm_v2">nvm_v2 by Tamari </option> */}
+            {/* <option value="nvm_v3">nvm_v3 by Tamari </option> */}
+            {/* <option value="nvm_v4">nvm_v4 by Tamari </option> */}
+            {/* <option value="bl_v2_alpha">bl_v2_alpha by Psychogoddess </option> */}
+            {/* <option value="asp_v1">asp_v1 by あさぴっぴ1020 </option> */}
+            {/* <option value="asp_v2">asp_v2 by あさぴっぴ1020 </option> */}
+            {/* <option value="bl_light">bl_light by あさぴっぴ1020 </option> */}
+            {/* <option value="apm_v1">apm_v1 by EtherealDoom </option> */}
+            {/* <option value="apm_v2">apm_v2 by EtherealDoom </option> */}
+            {/* <option value="nt_v2">nt_v2 by EtherealDoom </option> */}
+            {/* <option value="nt_v2">nt_v2 by EtherealDoom </option> */}
+            {/* <option value="asp_fp_v1">asp_fp_v1 by あさぴっぴ1020 </option> */}
+            {/* <option value="asp_fp_v2">asp_fp_v2 by あさぴっぴ1020 </option> */}
+            {/* <option value="dtf_pm">dtf_pm by あさぴっぴ1020 </option> */}
           </select>
           <b>Current: {SpawnCycle}</b>
           <i>Default: {DefaultSettings["SpawnCycle"]}</i>
@@ -408,7 +447,7 @@ function App() {
         <h3>List of CD Chokepoints console settings: </h3>
 
       </div>
-        {/* 
+      {/* 
         TODO: allow set difficulty
          */}
       <div>
