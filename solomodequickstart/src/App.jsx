@@ -123,6 +123,7 @@ function App() {
   //   }
   //   setWaveSizeFakes(desiredWaveSizeFakes)
   // }
+
   const updateMySettings = (e) => {
     // DEBUG:
     let _MySettings = { ...MySettings }
@@ -212,7 +213,7 @@ function App() {
           <ul>
             <li>CohortSize</li>
             <li>DoshKill</li>
-            <li></li>
+            <li>WSF</li>
           </ul>
         </div>
         <div>
@@ -225,6 +226,8 @@ function App() {
             <li>AlbinoGorefasts</li>
             <li>FPHPF</li>
             <li>SCHPF</li>
+            <li>QPHPF</li>
+            <li>trashHPF</li>
           </ul>
         </div>
       </div>
@@ -266,7 +269,7 @@ function App() {
           MySettings={MySettings}
           DefaultSettings={DefaultSettings}
           updateMySettings={updateMySettings}
-          cdSetting={"FleshPoundHpfakes"}>
+          cdSetting={"FleshpoundHPFakes"}>
         </SettingsNumberbox>
         <SettingsNumberbox
           MySettings={MySettings}
