@@ -147,45 +147,74 @@ function App() {
     // if (DefaultSettings["AlbinoAlphas"] != MySettings["AlbinoAlphas"]) { 
     //   CommandString += "?AlbinoAlphas=" + AlbinoAlphas
     // }
-    if (DefaultSettings["AlbinoAlphas"] != AlbinoAlphas) {
-      CommandString += "?AlbinoAlphas=" + AlbinoAlphas
+
+
+
+    if (DefaultSettings["AlbinoAlphas"] != MySettings["AlbinoAlphas"]) {
+      CommandString +=
+        "?AlbinoAlphas=" +
+        MySettings["AlbinoAlphas"]
     }
-    if (DefaultSettings["AlbinoCrawlers"] != AlbinoCrawlers) {
-      CommandString += "?AlbinoCrawlers=" + AlbinoCrawlers
+    if (DefaultSettings["AlbinoCrawlers"] != MySettings["AlbinoCrawlers"]) {
+      CommandString +=
+        "?AlbinoCrawlers=" +
+        MySettings["AlbinoCrawlers"]
     }
-    if (DefaultSettings["AlbinoGorefasts"] != AlbinoGorefasts) {
-      CommandString += "?AlbinoGorefasts=" + AlbinoGorefasts
+    if (DefaultSettings["AlbinoGorefasts"] != MySettings["AlbinoGorefasts"]) {
+      CommandString +=
+        "?AlbinoGorefasts=" +
+        MySettings["AlbinoGorefasts"]
     }
-    if (DefaultSettings["CohortSize"] != CohortSize) {
-      CommandString += "?CohortSize=" + CohortSize
+    if (DefaultSettings["CohortSize"] != MySettings["CohortSize"]) {
+      CommandString +=
+        "?CohortSize=" +
+        MySettings["CohortSize"]
     }
-    if (DefaultSettings["DoshKill"] != DoshKill) {
-      CommandString += "?DoshKill=" + DoshKill
+    if (DefaultSettings["DoshKill"] != MySettings["DoshKill"]) {
+      CommandString +=
+        "?DoshKill=" +
+        MySettings["DoshKill"]
     }
-    if (DefaultSettings["FleshpoundHPFakes"] != FleshpoundHPFakes) {
-      CommandString += "?FleshpoundHPFakes=" + FleshpoundHPFakes
+    if (DefaultSettings["FleshpoundHPFakes"] != MySettings["FleshpoundHPFakes"]) {
+      CommandString +=
+        "?FleshpoundHPFakes=" +
+        MySettings["FleshpoundHPFakes"]
     }
-    if (DefaultSettings["HeadlessFleshpoundDmg"] != HeadlessFleshpoundDmg) {
-      CommandString += "?HeadlessFleshpoundDmg=" + HeadlessFleshpoundDmg
+    if (DefaultSettings["HeadlessFleshpoundDmg"] != MySettings["HeadlessFleshpoundDmg"]) {
+      CommandString +=
+        "?HeadlessFleshpoundDmg=" +
+        MySettings["HeadlessFleshpoundDmg"]
     }
-    if (DefaultSettings["HeadlessScrakeDmg"] != HeadlessScrakeDmg) {
-      CommandString += "?HeadlessScrakeDmg=" + HeadlessScrakeDmg
+    if (DefaultSettings["HeadlessScrakeDmg"] != MySettings["HeadlessScrakeDmg"]) {
+      CommandString +=
+        "?HeadlessScrakeDmg=" +
+        MySettings["HeadlessScrakeDmg"]
     }
-    if (DefaultSettings["MaxMonsters"] != MaxMonsters) {
-      CommandString += "?MaxMonsters=" + MaxMonsters
+    if (DefaultSettings["MaxMonsters"] != MySettings["MaxMonsters"]) {
+      CommandString +=
+        "?MaxMonsters=" +
+        MySettings["MaxMonsters"]
     }
-    if (DefaultSettings["QuarterPoundHPFakes"] != QuarterPoundHPFakes) {
-      CommandString += "?QuarterPoundHPFakes=" + QuarterPoundHPFakes
+    if (DefaultSettings["QuarterPoundHPFakes"] != MySettings["QuarterPoundHPFakes"]) {
+      CommandString +=
+        "?QuarterPoundHPFakes=" +
+        MySettings["QuarterPoundHPFakes"]
     }
-    if (DefaultSettings["ScrakeHPFakes"] != ScrakeHPFakes) {
-      CommandString += "?ScrakeHPFakes=" + ScrakeHPFakes
+    if (DefaultSettings["ScrakeHPFakes"] != MySettings["ScrakeHPFakes"]) {
+      CommandString +=
+        "?ScrakeHPFakes=" +
+        MySettings["ScrakeHPFakes"]
     }
     CommandString += "?SpawnCycle=" + SpawnCycle
-    if (DefaultSettings["TrashHPFakes"] != TrashHPFakes) {
-      CommandString += "?TrashHPFakes=" + TrashHPFakes
+    if (DefaultSettings["TrashHPFakes"] != MySettings["TrashHPFakes"]) {
+      CommandString +=
+        "?TrashHPFakes=" +
+        MySettings["TrashHPFakes"]
     }
-    if (DefaultSettings["WaveSizeFakes"] != WaveSizeFakes) {
-      CommandString += "?WaveSizeFakes=" + WaveSizeFakes
+    if (DefaultSettings["WaveSizeFakes"] != MySettings["WaveSizeFakes"]) {
+      CommandString +=
+        "?WaveSizeFakes=" +
+        MySettings["WaveSizeFakes"]
     }
     CommandString += "?ZedsType=" + ZedsType
 
